@@ -93,11 +93,21 @@ console.log(polindrom_Better("m , m"));*/
    вывод fizzbuzz вместо чисел, кратных как 3, так и 5.*/
 
 function getFizzBuzz(num) {
-  if (num % 5 === 0 && num % 3 === 0) return "fizzbuzz";
-  if (num % 5 === 0) return "fizz";
-  if (num % 3 === 0) return "buzz";
+  let arr = [];
+  for (let i = 0; i <= num; i++) {
+    if (i % 5 === 0 && i % 3 === 0) {
+      arr.push("fizzbuzz")
+    } else if (i % 5 === 0) {
+      arr.push("buzz")
+    } else if (i % 3 === 0) {
+      arr.push("fizz")
+    } else {
+      arr.push(i)
+    }
+  }
+  return arr.join(';')
 }
-/*console.log(getFizzBuzz(5));*/
+console.log(getFizzBuzz(15));
 
 //#5-------------------------------------------------------------------------------------
 /*Нужно написать функцию, которая проверяет, 
@@ -109,8 +119,7 @@ function setAnagramm(str1, str2) {
   str2 = str2.replace(/[\s.,!?]/g, "");
   if (str1.length !== str2.length) return false;
   return str1.split("").sort().join("") === str2.split("").sort().join("")
-    ? true
-    : false;
+
 }
 /*console.log(setAnagramm(",ff!!", ",ff!"));*/
 //#6-------------------------------------------------------------------------------------
@@ -138,7 +147,7 @@ function myReverse(arr) {
   for (let i = arr.length - 1; i >= 0; i--) {
     arrNew.push(arr[i]);
   }
-  return (arr = arrNew);
+  return arrNew;
 }
 
 /*console.log(myReverse([2, 3, 5, 6]));*/
@@ -148,6 +157,7 @@ function myReverse(arr) {
 Найдите среднее арифметическое его элементов (сумма элементов, делить на количество)*/
 
 function getAvg(arr) {
+  if (!arr.length) return 'Массив пуст'
   let sum = 0;
   for (let el of arr) {
     sum += el;
@@ -182,7 +192,7 @@ console.log(findElement("mama", ["mama", "papa", 0, 1]));*/
 
 function getPartReverse(str) {
   arr = str.split("");
-  for (let i = 0; i < arr.length; ) {
+  for (let i = 0; i < arr.length;) {
     let tmp = arr[i];
     arr[i] = arr[i + 1];
     arr[i + 1] = tmp;
@@ -232,9 +242,11 @@ function getTimeYear(month) {
     return "Лето";
   } else if (month >= 9 && month <= 11) {
     return "Осень";
-  } else {
+  } else if ([12, 1, 2].includes(month)) {
     return "Зима";
+  } else {
+    return 'Входные данные некорректны. Задайте значение от 1 до 12'
   }
 }
 
-/*console.log(getTimeYear(2));*/
+/*console.log(getTimeYear(0));*/
