@@ -27,11 +27,13 @@
   justify-self: end;
   padding-right: 0.5em;
   font-size: 15px;
+  visibility: hidden;
 }
 .input_calc {
   text-align: right;
   padding-right: 0.3em;
   font-size: 20px;
+  outline: none;
 }
 .container {
   display: grid;
